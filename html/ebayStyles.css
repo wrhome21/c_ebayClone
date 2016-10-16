@@ -1,0 +1,38 @@
+body {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+div#header {
+    height: 75px;
+    background-color: lightGrey;
+    margin-bottom: 20px;
+}
+
+div#footer {
+    height: 15px;
+    background-color: lightGrey;
+    margin-top: 20px;    
+}
+
+.error {
+    color: red;
+    margin-top: 5px;
+}
+
+.ebayButton {
+    margin: 5px;
+}
+
+.auction {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.sellerName {
+    color: grey;
+}
+
+.auctionHeader {
+    background-color: lightblue;
+}

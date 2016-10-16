@@ -1,0 +1,100 @@
+<html ng-app="ebayApp">
+    <head>
+        <meta charset="utf-8">
+        <title>eBay clone with Angular</title>
+        <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssgrids/cssgrids-min.css">
+        <link rel="stylesheet" type="text/css" href="ebayStyles.css"/>
+        <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/redmond/jquery-ui.min.css"/>
+
+        <script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-route.js"></script>
+        <script src="../js/ebayApp.js"></script>  
+
+    </head>
+
+    <body ng-controller="EbayCtrl">
+        <div id="header">
+            <div class="yui3-g">
+                <div class="yui3-u-1">
+                    <div class="yui3-g">
+                        <div class="yui3-u-3-4">
+                            reBay
+                        </div>
+                        <div class="yui3-u-1-4">
+                            <div>
+                                <div ng-if="user">
+                                    <form ng-submit="logout()">
+                                        Welcome, {{user.name}}
+                                        <input className="ebayButton" id="logoutButton" type="submit" value="Log Out" />
+                                    </form>
+                                </div>
+                                <div ng-hide="user">
+                                        <form ng-submit="login()">
+                                        Login with your username: <input ng-model="username" type="text" id="username" name="name"  />
+                                        <input class="ebayButton" id="loginButton" type="submit" value="Login"  />
+                                        <p ng-if="loginError" class="error">Login Failed. Please enter user name again.</p>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="main" ng-view>
+        </div>
+
+        <div id="footer">
+            <div class="yui3-g">
+                <div class="yui3-u-1">
+
+                </div>
+            </div>
+        </div>
+
+        <div id="bidDialog">
+            <div class="yui3-g">
+                <div class="yui3-u-1">
+                    <p>Current Price: $<span id="currentBidValue"></span></p>
+                    <p>Place your bid.</p>
+                    
+                    <form>
+                        <label for="bidAmount">Bid Amount: </label>
+                        <input type="text" name="bidAmount" id="bidAmount" value="" class="text ui-widget-content ui-corner-all">
+                        <p id="bidErrorMessage" style="display:none" class="error">Please enter a bid higher than the current bid</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="newAuctionDialog">
+            <div class="yui3-g">
+                <div class="yui3-u-1">
+                    <p>Sell something.</p>                
+                    <form>
+                        <label for="title">Title: </label>
+                        <input type="text" name="title" id="title" value="" class="text ui-widget-content ui-corner-all">
+                        <br/>
+                        <label for="description">Description: </label>
+                        <input type="text" name="description" id="description" value="" class="text ui-widget-content ui-corner-all">
+                        <br/>
+                        <label for="startingBid">Starting Bid: </label>
+                        <input type="text" name="startingBid" id="startingBid" value="" class="text ui-widget-content ui-corner-all">
+                        <br/>
+                        <label for="duration">Duration: </label>
+                        <select name="duration" id="duration" class="text ui-widget-content ui-corner-all">
+                            <option value="1">1 Day</option>
+                            <option value="3">3 Days</option>
+                            <option value="5">5 Days</option>
+                            <option value="7">7 Days</option>
+                        </select>
+                        <br/>                                                           
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>  
+</html>

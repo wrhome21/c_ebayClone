@@ -1,0 +1,30 @@
+<input ng-if="user" className="ebayButton" id="addAuctionBtnId" type="submit" value="Sell Something" ng-click="openNewAuctionDialog()" />
+<div ng-repeat="auction in auctionList" class="yui3-g auction">
+    <div class="yui3-u-1">
+        <div class="yui3-g">
+            <div class="yui3-u-1-2">
+                <a href="/#/auctionDetails/{{auction.rowid}}">{{auction.title}}</a>&nbsp; 
+                [bids: {{auction.numberOfBids}}] <br/>
+                {{auction.description}} 
+                
+            </div>
+            <div class="yui3-u-1-6">
+                <span class="sellerName">{{auction.sellerName}}</span>
+            </div>
+            <div class="yui3-u-1-4">
+                ${{ (auction.numberOfBids > 0 ? auction.currentBid : auction.startingBid) }}
+                <span ng-if="auction.highestBidder" class="sellerName">({{auction.highestBidder}})</span>
+                <input ng-if="user && showTimeRemaining(auction.endDateTime) !== 0" class="ebayButton" id="bidBtnId" type="submit" value="Bid" ng-click="openBidDialog(auction)" />
+                <br/>
+                <div ng-if="showTimeRemaining(auction.endDateTime) !== 0">
+                    Time Remaining: <span class="{{endingSoon(auction.endDateTime) ? 'error': ''}}"> {{showTimeRemaining(auction.endDateTime)}} </span>
+                </div>
+                <div ng-hide="showTimeRemaining(auction.endDateTime) !== 0">
+                    This auction has ended.
+                </div>                            
+                
+            </div>                        
+        </div>
+    </div>
+    <br/> 
+</div>
